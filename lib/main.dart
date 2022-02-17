@@ -97,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'Hello World',
+              'Welcome to Hotel Booking App',
             ),
             Text(
               '$_counter',
