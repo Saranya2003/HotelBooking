@@ -136,8 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
           //     ?
           //showError(),
 
-          //Navigator.push(context,
-          //MaterialPageRoute(builder: (context) => MainCompanyScreen()))
+          Navigator.push(context,
+          MaterialPageRoute(builder: (context) => MainCompanyScreen()))
           // : showDialog(
           //     context: context,
           //     builder: (context) {
