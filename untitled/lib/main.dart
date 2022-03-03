@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:untitled/login/Login.dart';
+import 'package:untitled/Payment/PaymentScreen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -78,10 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextButton.styleFrom(backgroundColor: Color(0xFFF52B2Bf)),
           ),
           fontFamily: 'Poppins'),
-      // home: MainCompanyScreen(),
+
       home: LoginScreen(), //Original
-      //  home: LiveaboardDetailScreen(),
-      // home: DiveResortDetailScreen(),
+      //home: PaymentScreen(),
     );
   }
 }

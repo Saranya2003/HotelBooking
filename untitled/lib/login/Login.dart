@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:untitled/Signup/Signup.dart';
+import 'package:untitled/Homepage/Homepage.dart';
 //import 'dart:typed_data';
 //import 'package:hive/hive.dart';
 
@@ -136,8 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
           //     ?
           //showError(),
 
-          //Navigator.push(context,
-          //MaterialPageRoute(builder: (context) => MainCompanyScreen()))
+          Navigator.push(context,
+          MaterialPageRoute(builder: (context) => HomeScreen()))
           // : showDialog(
           //     context: context,
           //     builder: (context) {
@@ -181,10 +182,10 @@ class _LoginScreenState extends State<LoginScreen> {
           RaisedButton(
             elevation: 5.0,
             onPressed: () {
-              print(
-                  'Login Button Pressed'); //Determine what to do after clicking
-             // Navigator.push(context,
-               //   MaterialPageRoute(builder: (context) => SignUpDiverScreen()));
+              /*print(
+                  'Login Button Pressed'); //Determine what to do after clicking*/
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
             },
             padding: EdgeInsets.all(15.0),
             shape: RoundedRectangleBorder(

@@ -1,4 +1,4 @@
-
+/*
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/Homepage/Homepage.dart';
@@ -25,7 +25,7 @@ class DrawerItems extends StatelessWidget {
                         (index) => DrawerItem(
                       isActive: index == _controller.selectedIndex,
                       title: _controller.menuItems[index],
-                      press: () {
+                      press: () {*/
                         /*_controller.setMenuIndex(index);
                         if (_controller.selectedIndex == 0) {
                           Navigator.push(
@@ -74,7 +74,7 @@ class DrawerItems extends StatelessWidget {
                                   builder: (context) =>
                                       CompanyProfileScreen()));
                         }*/
-                      },
+                      /*},
                     )
                     )
 
@@ -83,4 +83,4 @@ class DrawerItems extends StatelessWidget {
           )),
     );
   }
-}
+}*/
