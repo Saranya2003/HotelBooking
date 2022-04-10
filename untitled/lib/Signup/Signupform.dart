@@ -4,6 +4,9 @@ import 'dart:io' as io;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:untitled/Database/Database.dart';
+import 'package:drift/drift.dart' as drift;
+import 'package:untitled/login/Login.dart';
 
 class SignupForm extends StatefulWidget {
   @override
@@ -11,6 +14,7 @@ class SignupForm extends StatefulWidget {
 }
 
 class _SignupFormState extends State<SignupForm> {
+  late HotelDatabase _db;
   bool _isObscure = true;
   final _formKey = GlobalKey<FormState>();
   String username="";
@@ -39,7 +43,11 @@ class _SignupFormState extends State<SignupForm> {
   //PickedFile divfront;
   //PickedFile card;
 
-
+  @override
+  void initState(){
+    super.initState();
+    _db = HotelDatabase();
+  }
 
   void loadData() async {
 
@@ -90,7 +98,27 @@ class _SignupFormState extends State<SignupForm> {
           SizedBox(height: 20),
 
           FlatButton(
-            onPressed: () => {
+            onPressed: (){
+              final entity = UserTableCompanion(
+                username: drift.Value(_controllerUsername.text),
+                password: drift.Value(_controllerPassword.text),
+
+              );
+              _db.insertUser(entity).then((value) => ScaffoldMessenger.of(context)
+                  .showMaterialBanner(
+                  MaterialBanner(
+                    content: Text('User successfully created!'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+                        child: const Text("Close")
+                      )
+                    ]
+
+                  )
+                )
+              );
+              Navigator.push(context,MaterialPageRoute(builder: (context) => LoginScreen()));
 
             },
             color: Color(0xfff75BDFF),

@@ -14,8 +14,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
   bool _isObscure = true;
-  //var dummyusername = 'Numchok';
-  //var dummypassword = 'Numchok';
+  var dummyusername = 'Numchok';
+  var dummypassword = 'Numchok';
   final usrcontroller = TextEditingController();
   final psscontroller = TextEditingController();
   //try {
@@ -138,11 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
           //showError(),
 
           Navigator.push(context,
-<<<<<<< HEAD
           MaterialPageRoute(builder: (context) => HomeScreen()))
-=======
-          MaterialPageRoute(builder: (context) => MainCompanyScreen()))
->>>>>>> main
           // : showDialog(
           //     context: context,
           //     builder: (context) {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:untitled/UserTest/UserTestScreen.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled/Database/Database.dart';
 import 'package:untitled/login/Login.dart';
 import 'package:untitled/Payment/PaymentScreen.dart';
 void main() {
@@ -71,17 +74,22 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Hotel Booking',
-      theme: ThemeData(
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: TextButton.styleFrom(backgroundColor: Color(0xFFF52B2Bf)),
-          ),
-          fontFamily: 'Poppins'),
+    return Provider(
+        create: (context) => HotelDatabase(),
+        child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Hotel Booking',
+        theme: ThemeData(
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: TextButton.styleFrom(backgroundColor: Color(0xFFF52B2Bf)),
+            ),
+            fontFamily: 'Poppins'),
 
-      home: LoginScreen(), //Original
-      //home: PaymentScreen(),
-    );
+        //home: UserTest(), //Original
+          home:LoginScreen(),
+        //home: HomeScreen(),
+        //ome: PaymentScreen(),
+        )
+      );
   }
 }
