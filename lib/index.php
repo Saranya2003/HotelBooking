@@ -46,4 +46,27 @@
         $conn->close();
         return;
     }
+    if("ADD_USR" == $action){
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $sql = "INSERT INTO $table (first_name, last_name) VALUES ('$first_name','$last_name')";
+        $result = $conn->query($sql);
+        echo "success";
+        $conn->close();
+        return;
+    }
+    if("UPDATE_USR" == $action){
+        $user_id = $_POST['$user_id']
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $sql = "UPDATE $table SET first_name = '$first_name', last_name = '$last_name' WHERE id = '$user_id'";
+        if($conn->query($sql) === TRUE){
+            echo "success";
+        }else{
+            echo "error";
+        }
+        $conn->close();
+        return;
+
+    }
 ?>
