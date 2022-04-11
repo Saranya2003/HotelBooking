@@ -69,4 +69,17 @@
         return;
 
     }
+
+    if('DELETE_USR' == $action){
+        $user_id = $_POST[$user_id];
+        $sql = "DELETE FROM $table WHERE id = $user_id";
+        if($conn->query($sql) === TRUE){
+            echo "success";
+        }else{
+            echo "error";
+        }
+        $conn->close();
+        return;
+    }
+
 ?>
