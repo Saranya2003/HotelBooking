@@ -1,17 +1,18 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:untitled/Database/Database.dart';
 //import 'package:note_keeper/screen/note_list_page.dart';
 import 'package:provider/provider.dart';
 
-class UserTest extends StatefulWidget {
-  const UserTest({Key? key}) : super(key: key);
+class RoomTest extends StatefulWidget {
+  const RoomTest({Key? key}) : super(key: key);
 
   @override
-  _UserTestState createState() => _UserTestState();
+  _RoomTestState createState() => _RoomTestState();
 }
 
-class _UserTestState extends State<UserTest> {
+class _RoomTestState extends State<RoomTest> {
   late HotelDatabase _db;
   @override
   void initState(){
@@ -24,16 +25,16 @@ class _UserTestState extends State<UserTest> {
   Widget build(BuildContext context) {
     _db = Provider.of<HotelDatabase>(context);
     return Scaffold(
-      body: FutureBuilder<List<UserTableData>>(
-        future: _db.getUserList(),
+      body: FutureBuilder<List<RoomTableData>>(
+        future: _db.getRoomList(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            List<UserTableData>? users = snapshot.data;
-            if (users != null) {
-              if (users.isEmpty) {
+            List<RoomTableData>? Rooms = snapshot.data;
+            if (Rooms != null) {
+              if (Rooms.isEmpty) {
                 return Center(
                   child: Text(
-                    'No User found in the list',
+                    'No Room found in the list',
                     textAlign: TextAlign.center,
                     style: Theme
                         .of(context)
@@ -43,17 +44,30 @@ class _UserTestState extends State<UserTest> {
                 );
               } else {
                 return ListView.builder(
-                  itemCount: users.length,
+                  itemCount: Rooms.length,
                   itemBuilder: (context, index){
-                    final user = users[index];
+                    final Room = Rooms[index];
                     return Card(
                       child: Column(
                         children:[
-                          Text(user.id.toString()),
-                          Text(user.username.toString()),
-                          Text(user.password.toString()),
-                          Text(user.category.toString())
-                          ]
+                          Text(Room.Roomid.toString()),
+                          Text(Room.Roomname.toString()),
+                          Text(Room.Price.toString()),
+                          Text(Room.maxoccupants.toString()),
+                          Text(Room.Roomtype.toString()),
+                          FlatButton(
+                            onPressed: (){
+
+                              _db.deleteRoom(Room.Roomid);
+
+                            },
+                            color: Color(0xfff75BDFF),
+                            child: Text(
+                              'Delete',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        ]
                       )
                     );
                   }

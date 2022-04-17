@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:untitled/AdminHomeScreen/AdmHmeScreen.dart';
 import 'package:untitled/Signup/Signup.dart';
 import 'package:untitled/Homepage/Homepage.dart';
 //import 'dart:typed_data';
@@ -14,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
   bool _isObscure = true;
+  bool showvalue = true;
   var dummyusername = 'Numchok';
   var dummypassword = 'Numchok';
   final usrcontroller = TextEditingController();
@@ -131,14 +133,14 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 5.0,
         onPressed: () => {
           //sendLogin(),
-          print('Login Button Pressed'), //Determine what to do after clicking
-          // usrcontroller.text == dummyusername &&
-          //         psscontroller.text == dummypassword
-          //     ?
-          //showError(),
-
-          Navigator.push(context,
-          MaterialPageRoute(builder: (context) => HomeScreen()))
+          //print('Login Button Pressed'), //Determine what to do after clicking
+          if (showvalue == true){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HomeScreen()))
+          }else if (showvalue == false){
+            Navigator.push(context,
+          MaterialPageRoute(builder: (context) => AdminHomeScreen()))
+          }
           // : showDialog(
           //     context: context,
           //     builder: (context) {
@@ -350,11 +352,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       _buildSignupBtn(),
                       SizedBox(
                         height: 30.0,
+
+                      ),
+                      Checkbox(
+                        value: showvalue,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            showvalue = value!;
+                            print(showvalue);
+                          });
+                        },
                       ),
                     ],
                   ),
                 ),
-              )
+              ),
+
             ],
           ),
         ),
@@ -376,6 +389,8 @@ class _LoginScreenState extends State<LoginScreen> {
         });
   }
 }
+
+
 
 final kBoxDecorationStyle = BoxDecoration(
   color: Colors.white,

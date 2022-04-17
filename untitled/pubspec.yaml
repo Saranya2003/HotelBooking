@@ -40,7 +40,8 @@ dependencies:
   path_provider: ^2.0.0
   path: ^1.8.0
   provider: ^6.0.2
-
+  numberpicker: ^2.1.1
+  syncfusion_flutter_charts: ^20.1.48
 
 
 dev_dependencies:

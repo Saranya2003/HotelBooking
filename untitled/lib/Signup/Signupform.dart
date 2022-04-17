@@ -25,6 +25,7 @@ class _SignupFormState extends State<SignupForm> {
   String email="";
   String password="";
   String confirmPassword="";
+  String usertype="User";
   final List<String> errors = [];
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerLastname = TextEditingController();
@@ -96,13 +97,35 @@ class _SignupFormState extends State<SignupForm> {
           SizedBox(height: 20),
           buildConfirmPasswordFormField(),
           SizedBox(height: 20),
+          DropdownButton<String>(
+            value: usertype,
+            icon: const Icon(Icons.arrow_downward),
+            elevation: 16,
+            style: const TextStyle(color: Colors.deepPurple),
+            underline: Container(
+              height: 2,
+              color: Colors.deepPurpleAccent,
+            ),
+            onChanged: (String? newValue) {
+              setState(() {
+                usertype = newValue!;
+              });
+            },
+            items: <String>['User','Admin']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
 
           FlatButton(
             onPressed: (){
               final entity = UserTableCompanion(
                 username: drift.Value(_controllerUsername.text),
                 password: drift.Value(_controllerPassword.text),
-
+                category: drift.Value(2),
               );
               _db.insertUser(entity).then((value) => ScaffoldMessenger.of(context)
                   .showMaterialBanner(

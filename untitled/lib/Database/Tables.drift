@@ -1,0 +1,21 @@
+CREATE TABLE user_table (
+    id INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    category TEXT NOT NULL,
+    email TEXT NOT NULL
+);
+
+CREATE TABLE room_table (
+    Roomid INT NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Roomname TEXT NOT NULL,
+    maxoccupants INT NOT NULL,
+    price INT NOT NULL,
+    Roomtype TEXT NOT NULL
+    );
+
+-- You can also create an index or triggers with drift files
+
+-- we can put named sql queries in here as well:
+createEntry: INSERT INTO user_table (username, password, category, email) VALUES (:uname, :psswrd, :cat, :mail);
+allusers: SELECT * FROM user_table;

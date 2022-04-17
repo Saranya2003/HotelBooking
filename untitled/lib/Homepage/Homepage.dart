@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:untitled/Homepage/DrawerItems.dart';
 import 'package:untitled/UserTest/UserTestScreen.dart';
 import 'package:untitled/login/Login.dart';
+import 'package:untitled/HotelAddScreen/HotelAddScreen.dart';
+import 'package:untitled/UserTest/RoomTestScreen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -104,14 +106,7 @@ class HomeScreen extends StatelessWidget {
                 // ...
               },
             ),
-            ListTile(
-              title: const Text('User List'), //Test Only
-              onTap: () {
-                Navigator.push(context,MaterialPageRoute(builder: (context) => UserTest()));
-                // Update the state of the app.
-                // ...
-              },
-            ),
+
             ListTile(
               title: const Text('Logout'),
               onTap: () {
